@@ -1,0 +1,37 @@
+// todo: remove vals from demo
+$color-black: #111111;
+$color-white: #ffffff;
+$color-grey-light: #dddddd;
+$color-grey: #444444;
+// american flag red
+// $color-red: #E0162B;
+// blood red
+$color-red: #8A0707;
+// american flag blue
+$color-blue: #002147;
+// mid between the above
+$color-purple: #451427;
+// pantone forest green
+// $color-green: #668D4E;
+// hunter green
+$color-green: #355e3b;
+$color-form: $color-grey;
+
+$font-site: 'PT Sans', sans-serif;
+$font-header: 'Oswald', sans-serif;
+$font-size-base: 16px;
+$font-size-site: 18px;
+$font-size-letter: 20px;
+$font-size-h1: 3.5rem;
+$font-size-h2: 2rem;
+
+$letter-spacing-h2: .01em;
+
+$font-weight-bold: 700;
+
+$container-width: 81.25rem; //1300px;
+$transition-time: .25s;
+$transition-time-slow: 1s;
+
+$padding-modal: 3rem;
+$opacity-modal-focused-ui: .1;

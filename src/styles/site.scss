@@ -1,0 +1,32 @@
+@import 'variables.scss';
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  background: $color-white;
+  color: $color-black;
+  font-family: $font-site;
+  font-size: $font-size-site;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  &:hover,
+  &:visited,
+  &:link,
+  &:active
+  {
+    text-decoration: none;
+  }
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+    margin: 0;
+    word-wrap: break-word;
+}

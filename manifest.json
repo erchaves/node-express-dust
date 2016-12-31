@@ -1,0 +1,8 @@
+{
+  "short_name": "Dear Nation",
+  "name": "Dear Nation - Hand written letters from the people to the people",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "display": "fullscreen"
+}

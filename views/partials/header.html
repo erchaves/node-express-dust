@@ -1,0 +1,11 @@
+<div class="section-header">
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <? if (user) {?>
+      <a href="/user"><span class="icon-user"></span></a>
+    <?} else {?>
+      <a href="/login"><span class="icon-user"></span></a>
+    <?}?>
+  </div>
+</div>

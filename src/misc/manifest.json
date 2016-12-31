@@ -1,0 +1,8 @@
+{
+  "short_name": "",
+  "name": "",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "display": "fullscreen"
+}

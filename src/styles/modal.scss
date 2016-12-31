@@ -1,0 +1,111 @@
+// todo remove demo styles
+.modal {
+  @include full-size();
+  $margin-gutter: ($padding-modal - $button-height) / 2;
+
+  font-size: $font-size-letter;
+  visibility: visible !important;
+  display: none;
+  z-index: 10;
+
+  &.is-active {
+    position: static;
+    display: block;
+  }
+
+  .bg {
+    @include full-size();
+
+    background: $color-black;
+    opacity: .95;
+  }
+
+  .container {
+    @include center-both();
+
+    height: 100vh;
+    max-width: 40rem;
+
+    form {
+      @include full-size();
+      margin: $padding-modal;
+    }
+  }
+
+  .inner {
+    @include full-size();
+
+    background: $color-white;
+    margin: $padding-modal * 1.6;
+  }
+
+  textarea {
+    @include full-size();
+    @include transition();
+
+    $border: 1px dashed $color-grey-light;
+
+    padding: 1rem;
+    height: 100%;
+    display: block;
+    border: $border;
+    overflow-y: auto;
+    outline: none;
+    resize: none;
+    line-height: 1.25em;
+
+    // weird trick to get the cursor to be lighter (on webkit)
+    color: $color-grey-light;
+    text-shadow: 0px 0px 0px $color-form;
+    -webkit-text-fill-color: transparent;
+
+    &::-webkit-input-placeholder {
+      text-shadow: none;
+      -webkit-text-fill-color: initial;
+    }
+  }
+
+  .btn-save-wrap {
+    position: absolute;
+    top: 100%;
+    margin-top: $padding-modal / 4;
+    text-align: center;
+    width: 100%;
+  }
+
+  .btn-save {
+    width: 100%;
+  }
+
+  .btn-close {
+    width: $button-height;
+    padding: .5rem;
+    line-height: $button-height;
+    position: relative;
+    margin-top: $margin-gutter;
+    margin-right: $margin-gutter;
+    background: transparent;
+    box-shadow: none;
+
+    span {
+      @include center-both();
+
+      height: 1em;
+      color: $color-grey;
+    }
+  }
+
+  &.is-focused {
+
+    .btn-close,
+    .btn-save {
+      opacity: $opacity-modal-focused-ui;
+    }
+
+    textarea {
+      @include transition();
+
+      border-color: transparent;
+    }
+  }
+}

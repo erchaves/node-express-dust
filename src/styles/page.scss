@@ -1,0 +1,17 @@
+.page {
+  // temp demo styles
+  .section-header {
+    width: 100%;
+    text-align: right;
+
+    .links a {
+      line-height: $font-size-site * 4;
+      display: inline-block;
+      margin: 0 .5rem;
+    }
+  }
+
+  .btn-modal-show {
+    margin-top: 10vh;
+  }
+}

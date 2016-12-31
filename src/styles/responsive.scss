@@ -1,0 +1,17 @@
+// Note: This should be used sparingly.
+@media #{$large-and-up} {
+  .container {
+    width: 95%;
+    max-width: $container-width;
+  }
+}
+
+// Note: This should be the main responsive breakpoint
+@media #{$medium-and-down} {
+
+}
+
+// Note: Try to use this sparingly, just for tweaks to extra small screens
+@media #{$small-and-down} {
+
+}
