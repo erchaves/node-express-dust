@@ -9,6 +9,7 @@ var siteDefaults = require('./bin/defaults');
 var ejs = require('ejs');
 var helmet = require('helmet');
 var app = express();
+var isDev = app.get('env') === 'development';
 var routes;
 
 // these might depend on the dotenv config above.
