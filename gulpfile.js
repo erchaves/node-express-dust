@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var dust = require('gulp-dust');
 var scss = require('gulp-sass');
 var path = require('path');
 var nodemon = require('gulp-nodemon');
@@ -28,11 +29,11 @@ var autoprefixer = require('autoprefixer');
 var Server = require('karma').Server;
 var env = process.env.NODE_ENV || 'production';
 var livereload = env === 'development' ? require('gulp-livereload') : null;
-
+var dist = 'dist';
 var config = require('./etc/.env.js');
 
 var paths = {
-  html: ['src/**/*.html'],
+  html: ['src/views/**/*.html'],
   scripts: ['src/scripts/**/*.js'],
   styles: ['src/styles/**/*.scss'],
   images: ['src/images/**/*'],
@@ -90,30 +91,25 @@ var taskServer = function () {
   });
 };
 
-// todo: do we need this?
 var taskHtml = function () {
-  var dist = 'dist';
-
   var process = gulp.src(paths.html)
     .pipe(newer(dist))
+    .pipe(dust())
     .pipe(minifyHTML({
       comments: true,
       spare: true,
       empty: true,
       quotes: true,
     }))
-    .pipe(rename(function(path) {
-      path.dirname = path.dirname.replace('/html', '');
-    }))
-    .pipe(gulp.dest(dist));
+    // .pipe(rename(function(path) {
+    //   path.dirname = path.dirname.replace('/html', '');
+    // }))
+    .pipe(gulp.dest(path.join(dist, 'views')));
 
-  if (env == 'development') {
-    process.pipe(livereload());
-  }
+    return process;
 };
 
 var taskStyles = function () {
-  var dist = 'dist';
   var postCssProcessors = [
     mqpacker,
     autoprefixer({ browsers: ['last 1 versions'] }),
@@ -159,8 +155,8 @@ var taskMisc = function () {
 };
 
 var taskScripts = function () {
-  var dist = 'dist';
-  var process = gulp.src('src/scripts/main.js', { read: false })
+  // todo add more read:false
+  var process = gulp.src('src/scripts/main.js', {read: false})
     .pipe(bro({
       insertGlobals: true,
       transform: [

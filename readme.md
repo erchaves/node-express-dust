@@ -3,12 +3,18 @@
 ## About the project
 todo...
 
-## Dev notes
+
+## Development Setup
 
 Install the dependencies:
 ```bash
 npm install
 ```
+Copy a local .env file:
+You must rename or copy the `readme.env` to `.env`.
+`.env` should be .gitignore'd and not pushed.
+Follow the comments in that file to replace default values as needed.
+
 Running locally:
 ```bash
 npm run dev
@@ -16,8 +22,9 @@ npm run dev
 # The app will be served at `localhost:3000`
 ```
 
+## Production Setup
 Running on Prod:
 ```bash
 npm start
-# npm prestart will run gulp build before it starts the server
+# npm prestart will run the gulp build before it starts the server
 ```

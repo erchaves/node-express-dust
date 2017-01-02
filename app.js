@@ -8,26 +8,28 @@ var siteData = require('./bin/constants');
 var siteDefaults = require('./bin/defaults');
 var ejs = require('ejs');
 var helmet = require('helmet');
+var adaro = require('adaro');
 var app = express();
 var isDev = app.get('env') === 'development';
-var routes;
-
-// these might depend on the dotenv config above.
-// Todo: that kind of sucks, consider making that dependency more clear.
-routes = require('./routes/index');
+var routes = require('./routes/index');
+var dustOptions = {helpers: []};
 
 // use alternative delimiter for ejs
 ejs.delimiter = '?';
 
 // Set the folder where the pages are kept
-app.set('views', __dirname + '/views');
+app.set('views', './src/views');
+
 
 // Using the .html extension instead of
 // having to name the views as *.ejs
-app.engine('html', ejs.__express);
+// app.engine('html', ejs.__express);
 
 // This avoids having to provide the
 // extension to res.render()
+// app.set('view engine', 'html');
+
+app.engine('html', adaro.dust(dustOptions));
 app.set('view engine', 'html');
 
 app.use(helmet());
@@ -36,7 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static('./dist'));
 
 app.use('/', routes);
 
@@ -63,6 +65,6 @@ app.use(function(err, req, res, next) {
 });
 
 // uncomment this after adding a favicon
-// app.use(favicon(__dirname + '/src/images/favicon.ico'));
+// app.use(favicon('./src/images/favicon.ico'));
 
 module.exports = app;

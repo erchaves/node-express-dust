@@ -7,7 +7,7 @@
   <meta name="title" content="<?=title?>">
   <meta name="description" content="<?=description?>">
 
-  <title><?=title?></title>
+  <title>{title}</title>
 
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="<?=title?>"/>
@@ -26,6 +26,11 @@
   <link rel="stylesheet" href="/main.css">
 </head>
 <body>
+
+  {+html_body}
+  test 1
+  {/html_body}
+
   <div class="wrapper">
     <?- include(page) ?>
     <?- include('./partials/modal.html') ?>
