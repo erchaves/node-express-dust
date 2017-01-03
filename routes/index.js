@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
     },
   });
 
-  res.render('index', data);
+  res.render('pages/home', data);
 });
 
 router.get('/about', function(req, res){

@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var siteData = require('./bin/constants');
 var siteDefaults = require('./bin/defaults');
-var ejs = require('ejs');
 var helmet = require('helmet');
 var adaro = require('adaro');
 var app = express();
@@ -25,7 +24,6 @@ if (isDev) {
 } else {
   // For rendering precompiled templates:
   app.set('views', './dist/views');
-  // todo: confirm that this adaro.js method takes the same dustOptions
   app.engine('js', adaro.js(dustOptions));
   app.set('view engine', 'js');
 }
@@ -59,7 +57,7 @@ app.use(function(err, req, res, next) {
   });
 
   res.status(err.status || 500);
-  res.render('index', data);
+  res.render('pages/home', data);
 });
 
 // uncomment this after adding a favicon

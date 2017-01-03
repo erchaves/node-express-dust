@@ -175,7 +175,6 @@ var taskScripts = function () {
 };
 
 var taskWatch = function () {
-  console.log('watching')
   gulp.watch(paths.html, ['html']);
   gulp.watch([paths.scripts, paths.html, '../modules/**/*'], ['scripts']);
   gulp.watch(paths.images, ['images']);

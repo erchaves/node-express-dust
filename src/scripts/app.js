@@ -12,7 +12,9 @@ import {
 
 class App {
   constructor (data) {
-    this.route = data.route;
+    // todo
+    // this.route = data.route;
+    this.route = 'home';
   }
 
   start() {
