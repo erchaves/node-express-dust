@@ -12,25 +12,23 @@ var adaro = require('adaro');
 var app = express();
 var isDev = app.get('env') === 'development';
 var routes = require('./routes/index');
-var dustOptions = {helpers: []};
+var dustOptions = {
+  helpers: [],
+  // don't cache on dev so we can see changes
+  cache: !isDev,
+};
 
-// use alternative delimiter for ejs
-ejs.delimiter = '?';
-
-// Set the folder where the pages are kept
-app.set('views', './src/views');
-
-
-// Using the .html extension instead of
-// having to name the views as *.ejs
-// app.engine('html', ejs.__express);
-
-// This avoids having to provide the
-// extension to res.render()
-// app.set('view engine', 'html');
-
-app.engine('html', adaro.dust(dustOptions));
-app.set('view engine', 'html');
+if (isDev) {
+  app.set('views', './src/views');
+  app.engine('html', adaro.dust(dustOptions));
+  app.set('view engine', 'html');
+} else {
+  // For rendering precompiled templates:
+  app.set('views', './dist/views');
+  // todo: confirm that this adaro.js method takes the same dustOptions
+  app.engine('js', adaro.js(dustOptions));
+  app.set('view engine', 'js');
+}
 
 app.use(helmet());
 app.use(logger('dev'));

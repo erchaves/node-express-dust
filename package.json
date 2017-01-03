@@ -7,7 +7,7 @@
     "start": "node ./server.js",
     "prestart": "gulp build",
     "dev": "gulp",
-    "test-prod": "gulp clean; NODE_ENV=production; npm start"
+    "prod": "NODE_ENV=production; gulp clean; npm start"
   },
   "//": [
     "note that updating gulp-livereload broke it",

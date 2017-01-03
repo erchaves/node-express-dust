@@ -93,14 +93,14 @@ var taskServer = function () {
 
 var taskHtml = function () {
   var process = gulp.src(paths.html)
-    .pipe(newer(dist))
+    // .pipe(newer(dist))
     .pipe(dust())
-    .pipe(minifyHTML({
-      comments: true,
-      spare: true,
-      empty: true,
-      quotes: true,
-    }))
+    // .pipe(minifyHTML({
+    //   comments: true,
+    //   spare: true,
+    //   empty: true,
+    //   quotes: true,
+    // }))
     // .pipe(rename(function(path) {
     //   path.dirname = path.dirname.replace('/html', '');
     // }))
@@ -175,6 +175,7 @@ var taskScripts = function () {
 };
 
 var taskWatch = function () {
+  console.log('watching')
   gulp.watch(paths.html, ['html']);
   gulp.watch([paths.scripts, paths.html, '../modules/**/*'], ['scripts']);
   gulp.watch(paths.images, ['images']);
