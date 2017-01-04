@@ -12,9 +12,8 @@ import {
 
 class App {
   constructor (data) {
-    // todo
-    // this.route = data.route;
-    this.route = 'home';
+    // todo there should be a better way to get this.
+    this.route = data.route;
   }
 
   start() {
