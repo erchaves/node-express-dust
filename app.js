@@ -7,6 +7,7 @@ var siteData = require('./bin/constants');
 var siteDefaults = require('./bin/defaults');
 var helmet = require('helmet');
 var adaro = require('adaro');
+var fs = require('fs');
 var app = express();
 var isDev = app.get('env') === 'development';
 var routes = require('./routes/index');
@@ -15,6 +16,11 @@ var dustOptions = {
   // don't cache on dev so we can see changes
   cache: !isDev,
 };
+
+if (fs.existsSync('./.env')) {
+  // this sets node configs from .env into the environment
+  require('dotenv').config();
+}
 
 if (isDev) {
   app.set('views', './src/views');
