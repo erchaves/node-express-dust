@@ -1,8 +1,5 @@
 import {$, $$} from './utils';
 import pubSub from './components/pubSub';
-import routes from './routes';
-import PageHome from './pages/home';
-import PageAbout from './pages/about';
 
 import {
   EVT_STRS,
@@ -10,15 +7,23 @@ import {
   QRY,
 } from './consts';
 
+import PageHome from './pages/home';
+import PageAbout from './pages/about';
+
+const pages = {
+  home: PageHome,
+  about: PageAbout,
+};
+
 class App {
   constructor (data) {
-    // todo there should be a better way to get this.
-    this.route = data.route;
+    this.route = data.route || 'home';
   }
 
   start() {
-    var Page = this.route === 'home' ? PageHome : PageAbout;
+    var Page = pages[this.route];
     var page = new Page();
+
     this.bindEvents_();
   }
 
