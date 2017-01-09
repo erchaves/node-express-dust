@@ -9,7 +9,8 @@ var helmet = require('helmet');
 var adaro = require('adaro');
 var fs = require('fs');
 var app = express();
-var isDev = app.get('env') === 'development';
+var env = process.env.NODE_ENV || 'production';
+var isDev = env !== 'production';
 var routes = require('./routes/index');
 var dustOptions = {
   helpers: [],

@@ -27,11 +27,10 @@ var mqpacker = require('css-mqpacker');
 var pixrem = require('pixrem');
 var autoprefixer = require('autoprefixer');
 var Server = require('karma').Server;
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 var isDev = env !== 'production';
 var livereload = isDev ? require('gulp-livereload') : null;
 var dist = 'dist';
-var config = require('./etc/.env.js');
 
 var paths = {
   html: ['src/views/**/*.html'],
@@ -140,7 +139,7 @@ var taskScripts = function () {
         babelify.configure({
           presets: ['es2015', {}],
         }),
-        envify(config),
+        envify({}),
       ],
       debug: (isDev),
     }))
