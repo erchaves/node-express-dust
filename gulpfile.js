@@ -43,43 +43,14 @@ var paths = {
   misc: ['src/misc/**/*'],
 };
 
-// wraps each task with another task that declares
-// a dependeny on the cleaningTaskFunction.
-// Returns the list of wrapped task names
-var cleanTaskHelper = function (tasksData, cleaningTaskFunction) {
-  var taskPrefix = 'cleantask_';
-  var cleaningTaskName = taskPrefix + 'clean';
-  var taskList = [];
-
-  // workaround helpers until Gulp gets to 4.0 and has sync tasks built in
-  var registerTasks = function(tasksData) {
-    tasksData.forEach(function(task) {
-      var taskName = taskPrefix + task.name;
-
-      // register each task with gulp, and make the cleantask a dep
-      gulp.task(taskName, [cleaningTaskName], function () {
-        task.func();
-      });
-
-      // and save the name for ref later.
-      taskList.push(taskName);
-    });
-  };
-
-  // register the actual cleaning task
-  gulp.task(cleaningTaskName, cleaningTaskFunction);
-
-  // register the tasks
-  registerTasks(tasksData);
-
-  // return the list of wrapped tasks
-  return taskList;
-};
-
 var onError = function(err) {
   gutil.beep();
   console.error(err.message);
 }
+
+var taskClean = function(){
+  return del('./dist');
+};
 
 var taskServer = function () {
   nodemon({
@@ -109,6 +80,11 @@ var taskHtml = function () {
 
     return process;
 };
+
+var taskFavicon = function () {
+  gulp.src('src/misc/favicon.ico')
+    .pipe(gulp.dest('dist'))
+}
 
 var taskStyles = function () {
   var postCssProcessors = [
@@ -184,47 +160,26 @@ var taskWatch = function () {
   gulp.watch(paths.styles, ['styles']);
 };
 
-var cleanDist = function(){
-  return del('./dist');
-};
+gulp.task('clean', taskClean);
 
-var distTasks = [{
-    name: 'taskHtml',
-    func: taskHtml,
-  },
-  {
-    name: 'taskScripts',
-    func: taskScripts,
-  },
-  {
-    name: 'taskStyles',
-    func: taskStyles,
-  },
-  {
-    name: 'taskImages',
-    func: taskImages,
-  },
-  {
-    name: 'taskFonts',
-    func: taskFonts,
-  },
-  {
-    name: 'taskMisc',
-    func: taskMisc,
-  },
-];
+// workaround helpers until Gulp gets to 4.0 and has sync tasks built in
+gulp.task('build', ['clean'], function () {
+  taskHtml();
+  taskFavicon();
+  taskStyles();
+  taskImages();
+  taskFonts();
+  taskMisc();
+  taskScripts();
+  return true;
+});
 
-var wrappedCleanTasks = cleanTaskHelper(distTasks, cleanDist);
-
-gulp.task('clean', cleanDist);
-gulp.task('clean-build', wrappedCleanTasks);
 gulp.task('html', taskHtml);
 gulp.task('scripts', taskScripts);
 gulp.task('styles', taskStyles);
 gulp.task('images', taskImages);
 gulp.task('fonts', taskFonts);
 gulp.task('misc', taskMisc);
-gulp.task('server', ['clean-build'], taskServer);
+gulp.task('server', ['build'], taskServer);
 gulp.task('watch', ['server'], taskWatch);
-gulp.task('build', ['scripts', 'html', 'styles', 'images', 'fonts', 'misc']);
 gulp.task('default', ['watch']);
