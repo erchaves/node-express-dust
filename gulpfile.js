@@ -27,8 +27,9 @@ var mqpacker = require('css-mqpacker');
 var pixrem = require('pixrem');
 var autoprefixer = require('autoprefixer');
 var Server = require('karma').Server;
-var env = process.env.NODE_ENV || 'production';
-var livereload = env === 'development' ? require('gulp-livereload') : null;
+var env = process.env.NODE_ENV || 'development';
+var isDev = env !== 'production';
+var livereload = isDev ? require('gulp-livereload') : null;
 var dist = 'dist';
 var config = require('./etc/.env.js');
 
@@ -45,19 +46,19 @@ var paths = {
 // wraps each task with another task that declares
 // a dependeny on the cleaningTaskFunction.
 // Returns the list of wrapped task names
-var cleanTaskHelper = function (tasks, cleaningTaskFunction) {
+var cleanTaskHelper = function (tasksData, cleaningTaskFunction) {
   var taskPrefix = 'cleantask_';
   var cleaningTaskName = taskPrefix + 'clean';
   var taskList = [];
 
   // workaround helpers until Gulp gets to 4.0 and has sync tasks built in
-  var registerTasks = function(tasks) {
-    tasks.forEach(function(task) {
+  var registerTasks = function(tasksData) {
+    tasksData.forEach(function(task) {
       var taskName = taskPrefix + task.name;
 
-      // register each task with gulp
+      // register each task with gulp, and make the cleantask a dep
       gulp.task(taskName, [cleaningTaskName], function () {
-        task();
+        task.func();
       });
 
       // and save the name for ref later.
@@ -69,7 +70,7 @@ var cleanTaskHelper = function (tasks, cleaningTaskFunction) {
   gulp.task(cleaningTaskName, cleaningTaskFunction);
 
   // register the tasks
-  registerTasks(tasks);
+  registerTasks(tasksData);
 
   // return the list of wrapped tasks
   return taskList;
@@ -128,7 +129,7 @@ var taskStyles = function () {
     .pipe(postcss(postCssProcessors))
     .pipe(gulp.dest(dist));
 
-  if (env == 'development') {
+  if (isDev) {
     return process.pipe(livereload());
   } else {
     return process.pipe(minifyCSS())
@@ -160,14 +161,16 @@ var taskScripts = function () {
     .pipe(bro({
       insertGlobals: true,
       transform: [
-        babelify.configure({ presets: ['es2015'] }),
+        babelify.configure({
+          presets: ['es2015', {}],
+        }),
         envify(config),
       ],
-      debug: (env == 'development'),
+      debug: (isDev),
     }))
     .pipe(gulp.dest(dist));
 
-  if (env == 'development') {
+  if (isDev) {
     process.pipe(livereload());
   }
 
@@ -185,13 +188,30 @@ var cleanDist = function(){
   return del('./dist');
 };
 
-var distTasks = [
-  taskHtml,
-  taskScripts,
-  taskStyles,
-  taskImages,
-  taskFonts,
-  taskMisc,
+var distTasks = [{
+    name: 'taskHtml',
+    func: taskHtml,
+  },
+  {
+    name: 'taskScripts',
+    func: taskScripts,
+  },
+  {
+    name: 'taskStyles',
+    func: taskStyles,
+  },
+  {
+    name: 'taskImages',
+    func: taskImages,
+  },
+  {
+    name: 'taskFonts',
+    func: taskFonts,
+  },
+  {
+    name: 'taskMisc',
+    func: taskMisc,
+  },
 ];
 
 var wrappedCleanTasks = cleanTaskHelper(distTasks, cleanDist);
