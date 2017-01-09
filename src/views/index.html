@@ -38,17 +38,12 @@
 
   <script src="/main.js"></script>
 
+  {?isDev}
   <script>
-    (function () {
-      var isProd = location.host === "XXX-todo";
-      var path;
-
-      if (isProd) {
-        return;
-      }
-      path = '//' + location.host.split(':')[0] + ':35729/livereload.js';
-      document.write('<script src="' + path + '"></'+'script>');
-    })();
+    var path = '//' + location.hostname + ':35729/livereload.js';
+    document.write('<script src="' + path + '"></'+'script>');
   </script>
+  {/isDev}
+
 </body>
 </html>
