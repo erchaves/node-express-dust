@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
   });
 
   res.status(err.status || 500);
-  res.render('pages/home', data);
+  res.render('pages/error', data);
 });
 
 module.exports = app;
