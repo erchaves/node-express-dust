@@ -1,7 +1,8 @@
-import {$, $$} from '../utils';
 import {CLASSES, QRY} from '../consts';
 import Modal from '../components/modal';
 import pubSub from '../components/pubSub';
+
+const $ = require('@erchaves/sprinkles');
 
 class PageHome {
   constructor(el) {
@@ -9,23 +10,12 @@ class PageHome {
   }
 
   init_() {
-    var modalEl = $(QRY.componentModal);
+    var modalEl = $(QRY.componentModal)[0];
 
-    this.btnModalShow = $(QRY.btnModalShow);
+    this.btnModalShow = $(QRY.btnModalShow)[0];
     this.modal = new Modal(modalEl);
     this.bindEvents_();
   }
-
-  // todo - move this logic to a generic page class
-  onModalHide_() {
-    $(QRY.componentPage).classList.remove(CLASSES.blur);
-  }
-
-  onModalShow_() {
-    $(QRY.componentPage).classList.add(CLASSES.blur);
-  }
-
-
 
   handleModalShow_(e) {
     e.preventDefault();
@@ -44,14 +34,6 @@ class PageHome {
     document.onkeydown = this.onEscHideModal_.bind(this);
 
     this.btnModalShow.onclick = this.handleModalShow_.bind(this);
-
-    pubSub.bind('modal.close', () => {
-      _this.onModalHide_();
-    });
-
-    pubSub.bind('modal.show', () => {
-      _this.onModalShow_();
-    });
   }
 }
 

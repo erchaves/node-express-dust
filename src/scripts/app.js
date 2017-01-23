@@ -1,4 +1,3 @@
-import {$, $$} from './utils';
 import pubSub from './components/pubSub';
 
 import {

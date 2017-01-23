@@ -1,11 +1,12 @@
-import {$, $$} from '../utils';
 import {CLASSES, QRY} from '../consts';
 import pubSub from '../components/pubSub';
+
+const $ = require('@erchaves/sprinkles');
 
 class Modal {
   constructor(el) {
     this.el = el;
-    this.btnClose = $(QRY.btnClose, el);
+    this.btnClose = $(QRY.btnClose, el)[0];
     this.bindEvents_();
     this.init_();
   }
