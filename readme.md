@@ -1,8 +1,6 @@
-# XXX-TODO-XXX Project
+# node-express-dust vanilla js scaffolding
 
-## About the project
-todo...
-
+## A vanilla js scaffolding for working with node, express, and dust
 
 ## Development Setup
 
@@ -11,9 +9,8 @@ Install the dependencies:
 npm install
 ```
 Copy a local .env file:
-You must rename or copy the `readme.env` to `.env`.
-`.env` should be .gitignore'd and not pushed.
-Follow the comments in that file to replace default values as needed.
+If you need an .env file to store secure tokens, rename or copy the `readme.env` to `/.env`.
+The `.env` file is .gitignore'd.
 
 Running locally:
 ```bash

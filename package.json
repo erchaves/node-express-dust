@@ -1,27 +1,22 @@
 {
-  "name": "XXX-TODO-XXX",
-  "version": "0.0.0",
+  "name": "node-express-dust",
+  "description": "A vanilla js scaffolding for working with node, express, and dust",
+  "license": "MIT",
+  "version": "0.0.1",
   "author": "eric.chaves.llc@gmail.com",
-  "private": true,
   "scripts": {
     "start": "node ./server.js",
     "prestart": "gulp build",
     "dev": "gulp",
     "prod": "NODE_ENV=production && gulp clean && npm start"
   },
-  "//": [
-    "note that updating gulp-livereload broke it",
-    "later, use an updated approach",
-    ""
-  ],
   "dependencies": {
-    "@erchaves/sprinkles": "^1.0.1",
+    "@erchaves/sprinkles": "^1.0.5",
     "adaro": "^1.0.4",
     "autoprefixer": "^6.5.0",
     "babel-preset-es2015": "^6.18.0",
     "babelify": "^7.3.0",
     "body-parser": "~1.15.2",
-    "connect-wwwhisper": "^0.1.16",
     "contentful": "^3.8.0",
     "cookie-parser": "~1.4.3",
     "custom-event-polyfill": "^0.3.0",
@@ -33,8 +28,8 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-bro": "^0.3.1",
+    "gulp-concat": "^2.6.1",
     "gulp-dust": "^3.0.0",
-    "gulp-livereload": "~2.1.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-minify-html": "~1.0.6",
     "gulp-newer": "^1.3.0",
@@ -42,20 +37,25 @@
     "gulp-plumber": "~1.1.0",
     "gulp-postcss": "^6.0.1",
     "gulp-processhtml": "1.1.0",
+    "gulp-refresh": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
+    "gulp-tap": "^0.1.3",
     "gulp-util": "~3.0.7",
     "helmet": "^3.2.0",
+    "http-auth": "^3.1.1",
     "jbone": "^1.2.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "materialize-css": "^0.97.7",
     "modernizr": "^3.3.1",
+    "moment": "^2.17.1",
     "morgan": "^1.7.0",
-    "smoothscroll-polyfill": "^0.3.4"
+    "smoothscroll-polyfill": "^0.3.4",
+    "stream-series": "^0.1.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/XXX-TODO-XXX"
+    "url": "git+https://github.com/erchaves/node-express-dust"
   }
 }

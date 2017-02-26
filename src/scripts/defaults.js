@@ -1,9 +1,10 @@
-var siteDescription = '';
-var siteRoot = '';
-var siteName = '';
-var siteTitle = `${siteName} - ${siteDescription}`;
+const siteDescription = '';
+const siteRoot = '';
+const siteName = 'Test Site';
+const siteTitle = `${siteName} - ${siteDescription}`;
 
 module.exports = {
+  user: null,
   title: siteTitle,
   description: siteDescription,
   siteName: siteName,

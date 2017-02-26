@@ -1,28 +1,29 @@
-var express = require('express');
-var siteData = require('../bin/constants');
-var siteDefaults = require('../bin/defaults');
-var router = express.Router();
+module.exports = function (router, siteData) {
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  var data = Object.assign({}, siteDefaults, siteData, {
-    injectData: {
-      route: 'home',
-    },
+  /* GET home page. */
+  router.get('/', function(req, res) {
+    var renderData = Object.assign({}, siteData, {
+      title: 'home',
+      appData: {
+        route: 'home',
+      },
+      isDev: siteData.isDev,
+    });
+
+    res.render('pages/home', renderData);
   });
 
-  res.render('pages/home', data);
-});
+  router.get('/about', function(req, res){
+    var renderData = Object.assign({}, siteData, {
+      title: 'about',
+      appData: {
+        route: 'about',
+      },
+      isDev: siteData.isDev,
+    });
 
-router.get('/about', function(req, res){
-  var data = Object.assign({}, siteDefaults, siteData, {
-    title: 'about',
-    injectData: {
-      route: 'about',
-    },
+    res.render('pages/about', renderData);
   });
 
-  res.render('pages/about', data);
-});
-
-module.exports = router;
+  return router;
+};
