@@ -11,30 +11,31 @@
 - Includes a tiny ~3kb of [Sprinkles](https://www.npmjs.com/package/@erchaves/sprinkles) for convenient DOM and AJAX utils.
 - Works on heroku out of the box
 
-## Development Setup
+### Development Setup
 
-Install the dependencies:
+- Install the dependencies:
 ```bash
 npm install
 ```
-Copy a local .env file:
-If you need an .env file to store secure tokens, rename or copy the `readme.env` to `/.env`.
-The `.env` file is .gitignore'd.
+- Copy or rename `readme.env` to `.env`.
+	- The .env file will get parsed by app-express.js.
+	- .env is .gitignored and can be used to store private tokens.
 
-Running locally:
+
+- Run the gulp build with livereload and start the server.
 ```bash
 npm run dev
 # or just run 'gulp' if you have gulp installed globally.
 # The app will be served at `localhost:3000`
 ```
 
-## Production Setup
-Running on Prod:
+### Production Setup
+- Run the production gulp build and start the server.
 ```bash
 npm start
 # npm prestart will automatically run the gulp build before starting.
 # This works on services like Heroku too. So gulp runs on deploy.
 ```
 
-## Demo
-You can a tiny test here: [https://erchaves-node-express-dust.herokuapp.com/](https://erchaves-node-express-dust.herokuapp.com/)
+### Demo
+- You can a tiny test here: [https://erchaves-node-express-dust.herokuapp.com/](https://erchaves-node-express-dust.herokuapp.com/)
