@@ -3,13 +3,12 @@
 ## A vanilla js scaffolding powered by node, express, and dust templating.
 
 ### Features:
--- Simple ES6 class module structure. No extra framework.
--- Babel with es2015
--- Gulp build process
--- Auto livereload
--- [Dust.js](http://www.dustjs.com/) template rendering with the same files on server or browser client.
--- Includes a tiny ~3kb of [Sprinkles](https://www.npmjs.com/package/@erchaves/sprinkles) for convenient DOM and AJAX utils.
--- Works on heroku out of the box
+	-- Simple ES6 class module structure. No extra framework.-- Babel with es2015
+	-- Gulp build process
+	-- Auto livereload
+	-- [Dust.js](http://www.dustjs.com/) template rendering with the same files on server or browser client.
+	-- Includes a tiny ~3kb of [Sprinkles](https://www.npmjs.com/package/@erchaves/sprinkles) for convenient DOM and AJAX utils.
+	-- Works on heroku out of the box
 
 ## Development Setup
 
