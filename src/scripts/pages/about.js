@@ -1,4 +1,3 @@
-
 class PageAbout {
   constructor(el) {
     this.init();

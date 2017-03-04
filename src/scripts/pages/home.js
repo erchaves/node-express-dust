@@ -1,17 +1,16 @@
-import Modal from '../components/modal';
 import pubSub from '../components/pubSub';
 
 const $ = require('@erchaves/sprinkles');
 
 class PageHome {
   constructor(el) {
+    // dom element searches should be restricted to the module's el.
+    this.$btnModalShow = $('.js-btn-modal-show', el);
+
     this.init();
   }
 
   init() {
-    var modalEl = $('.js-component-modal')[0];
-
-    this.modal = new Modal(modalEl);
     this.bindEvents();
   }
 
@@ -20,18 +19,9 @@ class PageHome {
     pubSub.trigger('modal.show');
   }
 
-  onEscHideModal(e) {
-    if (e.which === 27 || e.keyCode === 27) {
-      pubSub.trigger('modal.close');
-    }
-  }
-
   bindEvents() {
-    var _this = this;
-
-    document.onkeydown = this.onEscHideModal.bind(this);
-
-    $('.js-btn-modal-show').on('click', this.handleModalShow.bind(this));
+    // use bind(this) if the bound funtion needs to reference the 'this' module instance
+    this.$btnModalShow.on('click', this.handleModalShow);
   }
 }
 
