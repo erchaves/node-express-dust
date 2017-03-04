@@ -1,10 +1,10 @@
 
 class PageAbout {
   constructor(el) {
-    this.init_();
+    this.init();
   }
 
-  init_() {
+  init() {
     console.log('about init')
   }
 }

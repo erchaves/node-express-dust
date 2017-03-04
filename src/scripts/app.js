@@ -1,11 +1,5 @@
 import pubSub from './components/pubSub';
 
-import {
-  EVT_STRS,
-  CLASSES,
-  QRY,
-} from './consts';
-
 import PageHome from './pages/home';
 import PageAbout from './pages/about';
 
@@ -23,10 +17,10 @@ class App {
     var Page = pages[this.route];
     var page = new Page();
 
-    this.bindEvents_();
+    this.bindEvents();
   }
 
-  bindEvents_() {
+  bindEvents() {
     //
   }
 }

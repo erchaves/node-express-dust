@@ -39,3 +39,6 @@ npm start
 
 ### Demo
 - You can a tiny test here: [https://erchaves-node-express-dust.herokuapp.com/](https://erchaves-node-express-dust.herokuapp.com/)
+
+### Future Features
+- Make a simple module base class with a destory function that will auto-unbind events

@@ -1,4 +1,3 @@
-import {CLASSES, QRY} from '../consts';
 import pubSub from '../components/pubSub';
 
 const $ = require('@erchaves/sprinkles');
@@ -6,13 +5,11 @@ const $ = require('@erchaves/sprinkles');
 class Modal {
   constructor(el) {
     this.el = el;
-    this.btnClose = $(QRY.btnClose, el)[0];
-    this.bindEvents_();
-    this.init_();
+    this.bindEvents();
+    this.init();
   }
 
-  bindEvents_() {
-    var _this = this;
+  bindEvents() {
     var el = this.el;
 
     pubSub.bind('modal.close', () => {
@@ -23,22 +20,22 @@ class Modal {
       this.show();
     });
 
-    this.btnClose.onclick = this.handleClose_.bind(this);
+    $('.js-btn-close').on('click', this.handleClose.bind(this));
   }
 
   show() {
-    this.el.classList.add(CLASSES.isActive);
+    this.el.classList.add('is-active');
   }
 
   hide() {
-    this.el.classList.remove(CLASSES.isActive);
+    this.el.classList.remove('is-active');
   }
 
-  handleClose_(e) {
+  handleClose(e) {
     pubSub.trigger('modal.close');
   }
 
-  init_() {
+  init() {
   }
 }
 
