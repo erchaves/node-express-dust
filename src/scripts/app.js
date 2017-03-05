@@ -1,5 +1,3 @@
-import pubSub from './components/pubSub';
-
 // import app-wide modules like pages and the shared modal
 import PageHome from './pages/home';
 import PageAbout from './pages/about';
@@ -33,7 +31,7 @@ class App {
 
   onEscHideModal(e) {
     if (e.which === 27 || e.keyCode === 27) {
-      pubSub.trigger('modal.close');
+      $.trigger('modal.close');
     }
   }
 

@@ -1,5 +1,3 @@
-import pubSub from '../components/pubSub';
-
 const $ = require('@erchaves/sprinkles');
 
 class PageHome {
@@ -16,7 +14,7 @@ class PageHome {
 
   handleModalShow(e) {
     e.preventDefault();
-    pubSub.trigger('modal.show');
+    $.trigger('modal.show');
   }
 
   bindEvents() {

@@ -1,5 +1,3 @@
-import pubSub from '../components/pubSub';
-
 const $ = require('@erchaves/sprinkles');
 
 class Modal {
@@ -12,11 +10,11 @@ class Modal {
   bindEvents() {
     var el = this.el;
 
-    pubSub.bind('modal.close', () => {
+    $.on('modal.close', () => {
        this.hide();
     });
 
-    pubSub.bind('modal.show', () => {
+    $.on('modal.show', () => {
       this.show();
     });
 
@@ -32,7 +30,7 @@ class Modal {
   }
 
   handleClose(e) {
-    pubSub.trigger('modal.close');
+    $.trigger('modal.close');
   }
 
   init() {
