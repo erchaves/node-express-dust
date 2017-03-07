@@ -151,7 +151,10 @@ var taskScripts = function () {
       insertGlobals: true,
       transform: [
         babelify.configure({
-          presets: ['es2015', {}],
+          presets: ['react', 'es2015'],
+          plugins: [
+            ['transform-react-jsx', {'pragma':'h'}],
+          ],
         }),
       ],
       debug: (isDev),
