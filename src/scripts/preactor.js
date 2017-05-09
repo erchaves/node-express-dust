@@ -5,6 +5,10 @@ export default class Preactor extends Component {
     super();
   }
 
+  render() {
+    console.log('test');
+  }
+
   // proxy to a nicer syntax
   // componentWillMount --> preInit
   // componentDidMount --> postInit
