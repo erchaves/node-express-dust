@@ -4,7 +4,12 @@
 <div class="page page-about js-page">
   <div class="container">
     {>"./partials/header"/}
-    Page About
+    <h1>Page {appData.route}</h1>
+
+    <div>
+      <p>Testing a server-side filter for the {appData.route|testToUpper} page.</p>
+    </div>
+    <div class="js-test-client-side-render"></div>
   </div>
 </div>
 {/page_body}

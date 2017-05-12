@@ -1,4 +1,13 @@
 .page {
+  h1 {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
   // temp demo styles
   .section-header {
     width: 100%;

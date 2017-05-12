@@ -32,6 +32,8 @@ const livereload = isDev ? require('gulp-refresh') : livereloadOnProdErr;
 
 const sugarconeGulpUtils = sugarcone.gulpUtils(Object.assign({
   isDebug: isDev,
+  // todo: clarify this.
+  dustExtensions: path.join(__dirname, 'dust-extensions.js'),
 }, sugarconeConfig));
 
 const globs = {

@@ -1,6 +1,6 @@
 const $ = require('@erchaves/sprinkles');
 
-class PageHome {
+export default class {
   constructor(el) {
     // dom element searches should be restricted to the module's el.
     this.$btnModalShow = $('.js-btn-modal-show', el);
@@ -22,5 +22,3 @@ class PageHome {
     this.$btnModalShow.on('click', this.handleModalShow);
   }
 }
-
-export default PageHome;
