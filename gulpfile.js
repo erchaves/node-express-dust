@@ -31,7 +31,7 @@ const livereloadOnProdErr = function(){
 const livereload = isDev ? require('gulp-refresh') : livereloadOnProdErr;
 
 const sugarconeGulpUtils = sugarcone.gulpUtils(Object.assign({
-  isDev: isDev,
+  isDebug: isDev,
 }, sugarconeConfig));
 
 const globs = {
