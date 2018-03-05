@@ -22,6 +22,14 @@ export default class Clock extends Preactor {
 
   render(props, state) {
     let time = new Date(state.time).toLocaleTimeString();
-    return <span>{ time }</span>;
+
+    return <div className="component-preact-clock">
+      <h2>
+        Demo of preact component: Live updating clock
+      </h2>
+      <div className="clock-time deep-orange lighten-3">
+        { time }
+      </div>
+    </div>;
   }
 }
