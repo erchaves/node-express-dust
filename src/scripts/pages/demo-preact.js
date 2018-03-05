@@ -4,7 +4,7 @@ import Clock from '../components/clock';
 
 const $ = require('@erchaves/sprinkles');
 
-class PageAbout extends Preactor {
+class DemoPreact extends Preactor {
   constructor(el) {
     super();
 
@@ -22,4 +22,4 @@ class PageAbout extends Preactor {
   }
 }
 
-export default PageAbout;
+export default DemoPreact;
