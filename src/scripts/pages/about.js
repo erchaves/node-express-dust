@@ -1,25 +1,17 @@
-import Preactor from '../preactor';
-import {h, render, Component} from 'preact';
-import Clock from '../components/clock';
+import ClientSidePartialTest from '../components/client-side-partial-test';
 
 const $ = require('@erchaves/sprinkles');
 
-class PageAbout extends Preactor {
+export default class {
   constructor(el) {
-    super();
-
-    this.$clock = $('Clock', el);
+    this.el = el;
 
     this.init();
   }
 
   init() {
-    render(<Clock />, this.$clock[0]);
-    // note: you can opt not to use the jsx syntax like this.
-    // render(h(Clock), this.$clock[0]);
+    const $tester = $(this.el).find('.js-test-client-side-render');
 
-    console.log('about init')
+    new ClientSidePartialTest($tester);
   }
 }
-
-export default PageAbout;

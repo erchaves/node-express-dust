@@ -6,17 +6,13 @@
     {>"./partials/header"/}
     <div class="row">
       <div class="col s12">
-        Page About
+        <h1>Page {appData.route}</h1>
       </div>
     </div>
     <div class="row">
-      <div class="col s12 center">
-        <Clock></Clock>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12 center">
-        Please see <a href="https://github.com/erchaves/node-express-dust">https://github.com/erchaves/node-express-dust</a> for more information.
+      <div class="col s12">
+        <p>Testing a server-side filter for the {appData.route|testToUpper} page.</p>
+        <div class="js-test-client-side-render"></div>
       </div>
     </div>
   </div>

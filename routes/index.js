@@ -1,28 +1,23 @@
 module.exports = function (router, siteData) {
 
+  const getPageData = function(req, res, pageName) {
+    return Object.assign({}, siteData, {
+      title: pageName,
+      appData: {
+        route: pageName,
+      },
+    });
+  };
+
   /* GET home page. */
   router.get('/', function(req, res) {
-    var renderData = Object.assign({}, siteData, {
-      title: 'home',
-      appData: {
-        route: 'home',
-      },
-      isDev: siteData.isDev,
-    });
-
-    res.render('pages/home', renderData);
+    const pageData = getPageData(req, res, 'home');
+    res.render('pages/home', pageData);
   });
 
   router.get('/about', function(req, res){
-    var renderData = Object.assign({}, siteData, {
-      title: 'about',
-      appData: {
-        route: 'about',
-      },
-      isDev: siteData.isDev,
-    });
-
-    res.render('pages/about', renderData);
+    const pageData = getPageData(req, res, 'about');
+    res.render('pages/about', pageData);
   });
 
   router.get('/demo-preact', function(req, res){

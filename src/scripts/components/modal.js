@@ -30,6 +30,7 @@ class Modal {
   }
 
   handleClose(e) {
+    e.preventDefault();
     $.trigger('modal.close');
   }
 

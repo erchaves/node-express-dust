@@ -8,6 +8,7 @@
 - Gulp build process
 - Auto livereload
 - [Dust.js](http://www.dustjs.com/) template rendering with the same files on server or browser client.
+	 - Dust is compiled through a helper package [Sugarcone](https://www.npmjs.com/package/@erchaves/Sugarcone). More documentation coming soon for that.
 - Includes a tiny ~3kb of [Sprinkles](https://www.npmjs.com/package/@erchaves/sprinkles) for convenient DOM and AJAX utils.
 - Works on heroku out of the box
 - Includes example of using preact (see "preactor" component) for a simple component with live state updates.

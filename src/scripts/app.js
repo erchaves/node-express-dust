@@ -2,8 +2,15 @@
 import PageHome from './pages/home';
 import PageAbout from './pages/about';
 import PageDemoPreact from './pages/demo-preact';
+
+// import * as Pages from '../../dist/sugarcone/page-module-index';
+// todo: ^ make this more clear #sugarconeDist
+// Note: I was playing around with clever ways to automate some things.
+// But right now, it feels "too clever" and not well documented enough.
+
 import Modal from './components/modal';
 
+const sugarconeApp = require('@erchaves/sugarcone').app;
 const $ = require('@erchaves/sprinkles');
 
 const pages = {
@@ -22,11 +29,14 @@ class App {
   }
 
   init() {
-    // get the correct page constructor
-    var Page = pages[this.route];
+    const pageEl = $('.js-page')[0];
 
-    this.page = new Page();
+    const Page = sugarconeApp.getPage(Pages, this.route);
     this.modal = new Modal(this.modalEl);
+
+    if (Page) {
+      this.page = new Page(pageEl);
+    }
 
     this.bindEvents();
   }
