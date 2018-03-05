@@ -1,6 +1,7 @@
 // import app-wide modules like pages and the shared modal
 import PageHome from './pages/home';
 import PageAbout from './pages/about';
+import PageDemoPreact from './pages/demo-preact';
 import Modal from './components/modal';
 
 const $ = require('@erchaves/sprinkles');
@@ -8,6 +9,7 @@ const $ = require('@erchaves/sprinkles');
 const pages = {
   home: PageHome,
   about: PageAbout,
+  pageDemoPreact: PageDemoPreact,
 };
 
 class App {
