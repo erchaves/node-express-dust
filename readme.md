@@ -10,6 +10,8 @@
 - [Dust.js](http://www.dustjs.com/) template rendering with the same files on server or browser client.
 - Includes a tiny ~3kb of [Sprinkles](https://www.npmjs.com/package/@erchaves/sprinkles) for convenient DOM and AJAX utils.
 - Works on heroku out of the box
+- Includes example of using preact (see "preactor" component) for a simple component with live state updates.
+
 
 ### Development Setup
 
@@ -22,7 +24,7 @@ npm install
 	- .env is .gitignored and can be used to store private tokens.
 
 
-- Run the gulp build with livereload and start the server.
+- Run the gulp build with livereload and start the server. It will run on port 3000.
 ```bash
 npm run dev
 # or just run 'gulp' if you have gulp installed globally.

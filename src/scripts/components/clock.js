@@ -8,14 +8,14 @@ export default class Clock extends Preactor {
     this.state.time = Date.now();
   }
 
-  postInit() {
+  componentDidMount() {
     // update time every second
     this.timer = setInterval(() => {
       this.setState({ time: Date.now() });
     }, 1000);
   }
 
-  preDestroy() {
+  componentWillUnmount() {
     // stop when not renderable
     clearInterval(this.timer);
   }
