@@ -1,4 +1,6 @@
 import App from './app';
 
-// bootstrap the App into the live window context
-require('@erchaves/sugarcone').bootstrap(App, window);
+const appData = window.appData || {};
+const app = new App(appData);
+
+window.onload = app.init.bind(app);

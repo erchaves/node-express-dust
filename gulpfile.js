@@ -13,7 +13,6 @@ const rename = require('gulp-rename');
 const minifyHTML = require('gulp-minify-html');
 const minifyCSS = require('gulp-minify-css');
 const plumber = require('gulp-plumber');
-const gutil = require('gulp-util');
 const postcss = require('gulp-postcss');
 const sugarcone = require('@erchaves/sugarcone');
 const sugarconeConfig = require('./sugarcone-config');
@@ -48,7 +47,6 @@ const globs = {
 };
 
 var onError = function(err) {
-  gutil.beep();
   console.error(err.message);
 }
 
@@ -119,7 +117,10 @@ var taskScripts = function () {
 
   var transformOptions = [
     babelify.configure({
-      presets: ['es2015'],
+      presets: ['react', 'es2015'],
+      plugins: [
+        ['transform-react-jsx', {'pragma':'h'}],
+      ],
     }),
   ];
 

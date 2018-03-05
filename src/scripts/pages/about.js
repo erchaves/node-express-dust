@@ -1,4 +1,5 @@
 import ClientSidePartialTest from '../components/client-side-partial-test';
+
 const $ = require('@erchaves/sprinkles');
 
 export default class {

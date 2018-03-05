@@ -20,5 +20,17 @@ module.exports = function (router, siteData) {
     res.render('pages/about', pageData);
   });
 
+  router.get('/demo-preact', function(req, res){
+    var renderData = Object.assign({}, siteData, {
+      title: 'Demo Preact',
+      appData: {
+        route: 'demo-preact',
+      },
+      isDev: siteData.isDev,
+    });
+
+    res.render('pages/demo-preact', renderData);
+  });
+
   return router;
 };

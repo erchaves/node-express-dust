@@ -1,9 +1,17 @@
-// todo: make this more clear #sugarconeDist
-import * as Pages from '../../dist/sugarcone/page-module-index';
+// import app-wide modules like pages and the shared modal
+import PageHome from './pages/home';
+import PageAbout from './pages/about';
+import PageDemoPreact from './pages/demo-preact';
+
 import Modal from './components/modal';
 
-const sugarconeApp = require('@erchaves/sugarcone').app;
 const $ = require('@erchaves/sprinkles');
+
+const pages = {
+  "home": PageHome,
+  "about": PageAbout,
+  "demo-preact": PageDemoPreact,
+};
 
 class App {
   constructor (data) {
@@ -17,7 +25,8 @@ class App {
   init() {
     const pageEl = $('.js-page')[0];
 
-    const Page = sugarconeApp.getPage(Pages, this.route);
+    const Page = pages[this.route];
+
     this.modal = new Modal(this.modalEl);
 
     if (Page) {
